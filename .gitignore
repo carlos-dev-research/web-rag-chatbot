@@ -1,5 +1,6 @@
 # Ignore files in the data directory documents to be used in RAG
-data/*
+.data/*
+!.data/.gitkeep
 
 # Ignore log file
 *.log
@@ -13,6 +14,7 @@ Thumbs.db
 
 # Ignore database data
 db-mysql/*
+!.db-mysql/.gitkeep
 
 #Ignore cache
 .pytest_cache
@@ -20,3 +22,4 @@ __pychache__/
 
 # Ignore uploaded Audios
 .uploaded_audios/*
+!.uploaded_audios/.gitkeep
