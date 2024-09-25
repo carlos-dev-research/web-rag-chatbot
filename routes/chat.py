@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify, Response,stream_with_context, current_app
+import os
 from models import *
 
 chat_bp = Blueprint('chat',__name__)
