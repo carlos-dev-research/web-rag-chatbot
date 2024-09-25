@@ -1,5 +1,5 @@
 # Ignore files in the data directory documents to be used in RAG
-data/
+data/*
 
 # Ignore log file
 *.log
@@ -12,11 +12,11 @@ config.json
 Thumbs.db
 
 # Ignore database data
-db-mysql
+db-mysql/*
 
 #Ignore cache
 .pytest_cache
 __pychache__/
 
 # Ignore uploaded Audios
-.uploaded_audios
+.uploaded_audios/*
