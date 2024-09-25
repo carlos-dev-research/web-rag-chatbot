@@ -1,0 +1,22 @@
+# Ignore files in the data directory documents to be used in RAG
+data/
+
+# Ignore log file
+*.log
+
+# Ignore enviromental variables
+config.json
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore database data
+db-mysql
+
+#Ignore cache
+.pytest_cache
+__pychache__/
+
+# Ignore uploaded Audios
+.uploaded_audios
