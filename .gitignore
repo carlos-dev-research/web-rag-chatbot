@@ -6,7 +6,7 @@ data/*
 *.log
 
 # Ignore enviromental variables
-config.json
+config/config.json
 
 # Ignore OS-specific files
 .DS_Store
