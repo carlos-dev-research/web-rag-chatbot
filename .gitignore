@@ -5,9 +5,6 @@ data/*
 # Ignore log file
 *.log
 
-# Ignore enviromental variables
-config/config.json
-
 # Ignore OS-specific files
 .DS_Store
 Thumbs.db

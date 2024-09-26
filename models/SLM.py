@@ -52,8 +52,8 @@ class SLM:
     def check_for_videos(self,text):
         youtube_url_pattern = re.compile(r'(https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)[\w\-]+)')
         matches = youtube_url_pattern.findall(text)
-        if matches:
-            return ""
+        if not matches:
+            return 1,""
         
         context = ""
         template = """
@@ -61,13 +61,16 @@ class SLM:
         Transcription: {transcription}
         """
         for idx,match in enumerate(matches):
-            video_title,transcription = self.get_youtube_video(match)
-            prompt = [
-            {'role': 'user', 'content': template.format(transcription=transcription)}
-        ]
-            summary = self.prompt(chat_history=prompt,stream=False)['message']['content']
-            context+=f"Transcription of the Video #{idx}\nTitle of the video:{video_title}\nUrl of the video: {match}\nSummary of the video:\n{summary}\n\n"
-        return context
+            try:
+                video_title,transcription = self.get_youtube_video(match)
+                prompt = [
+                {'role': 'user', 'content': template.format(transcription=transcription)}
+            ]
+                summary = self.prompt(chat_history=prompt,stream=False)['message']['content']
+                context+=f"Transcription of the Video #{idx}\nTitle of the video:{video_title}\nUrl of the video: {match}\nSummary of the video:\n{summary}\n\n"
+            except:
+                return 2,"Tell the user exactly 'Youtube feature is not working for tecnical issues and I cannot assist you with it, thanks for your patience'"
+        return 0,context
 
     def chat(self,chat_history, data_folder, is_stream=True):
         """
@@ -94,6 +97,23 @@ class SLM:
             for message in chat_history[:-1]:
                 memory.put(ChatMessage(role=message['role'],content=message['content']))
         
+
+        
+        # Current user input
+        user_input = chat_history[-1]['content']
+
+        # Use a template and tools for the user prompt
+        yt_ft,context = self.check_for_videos(user_input)
+        if yt_ft == 1:
+            prompt = user_input
+        elif yt_ft == 0:
+            template = """Context:\n{context}\n|---------------------------------|\nUser input: \n{user_input}"""
+            prompt = template.format(context=context,user_input=user_input)
+        else:
+            memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
+            prompt = """Write a message for user stating at the current moment is not possible to retrieve the youtube video from the web, Just answer with the message and nothing else.\nMessage:"""
+        
+
         # Create chat engine with memory
         chat_engine = index.as_chat_engine(
             chat_mode = "context",
@@ -103,20 +123,13 @@ class SLM:
             )
         )
 
-        # Current user input
-        user_input = chat_history[-1]['content']
 
-        # Use a template and tools for the user prompt
-        context = self.check_for_videos(user_input)
-        template = """
-        Context:{context}\n
-        User input: {user_input}
-        """
-        prompt = template.format(context=context,user_input=user_input)
+        print(prompt)
         if is_stream:
             response = chat_engine.stream_chat(prompt)
         else:
             reponse = chat_engine.chat(prompt)
+        print("Send object streaming")
 
         return response
     

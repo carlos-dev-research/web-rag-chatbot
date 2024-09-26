@@ -1,0 +1,30 @@
+# Ignore log files
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore everything in the database directory
+db-mysql/
+init.sql
+
+# Ignore notebook
+notebooks/
+
+# Ignore Video Sample
+video-samples/
+
+# Ignore cache
+.pytest_cache
+__pycache__/
+
+# Ignore uploaded audios but keep the directory
+uploaded_audios/*
+
+# Additional files to ignore in Docker
+.gitignore
+Dockerfile
+.gitkeep
+run-docker.sh
+build-docker.sh

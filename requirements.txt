@@ -1,0 +1,32 @@
+# Basic pip and Jupyter setup
+jupyterlab
+
+# PyTorch and its ecosystem
+torch
+torchvision
+torchaudio
+
+# Transformer models and libraries for deep learning and AI
+transformers
+ollama
+
+# Audio processing libraries
+soundfile
+librosa
+ffmpeg
+
+# Flask web framework
+Flask
+
+# Other dependencies
+blinker
+pytube
+bcrypt
+mysql-connector-python
+pytest
+
+# Llama-index libraries
+llama-index-core
+llama-index-readers-file
+llama-index-llms-ollama
+llama-index-embeddings-huggingface
