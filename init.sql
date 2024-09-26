@@ -271,18 +271,13 @@ BEGIN
         WHERE u.email = in_email;
 
         -- Set out_op_status based on whether any chat history was found
-        IF history_count > 0 THEN
-            -- Chat history found, return it
-            SELECT c.conversation_id, c.title, c.created_at
-            FROM chat_history c
-            JOIN user_credentials u ON c.user_id = u.user_id
-            WHERE u.email = in_email;  -- Ensure email matches
+        -- Chat history found, return it
+        SELECT c.conversation_id, c.title, c.created_at
+        FROM chat_history c
+        JOIN user_credentials u ON c.user_id = u.user_id
+        WHERE u.email = in_email;  -- Ensure email matches
 
-            SET out_op_status = TRUE;  -- Chat history read successfully
-        ELSE
-            -- No chat history found
-            SET out_op_status = FALSE;
-        END IF;
+        SET out_op_status = TRUE;  -- Chat history read successfully
     ELSE
         SET out_op_status = FALSE;  -- Invalid token, chat history not read
     END IF;

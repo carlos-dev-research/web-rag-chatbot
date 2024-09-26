@@ -683,16 +683,3 @@ document.addEventListener("keydown", handleKeyDown);
 
 let mediaRecorder;
 let audioChunks = [];
-
-
-
-
-
-
-
- 
-
-
-
-
-

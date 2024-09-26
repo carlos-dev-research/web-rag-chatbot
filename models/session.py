@@ -161,6 +161,12 @@ class session:
             raise ValueError("Token used is not valid")
         elif not op_status:
             raise RuntimeError("Unable to read chat history")
+        
+        # Check if results is empty or contains no rows
+        if not results or not results[0]:
+            # Handle the case where no chat history is found
+            return []  # Return an empty list to signify no history available
+        
         return results[0]
         
     def create_conversation(self, title:str, chat_content:List[Dict[str,str]]) -> str:

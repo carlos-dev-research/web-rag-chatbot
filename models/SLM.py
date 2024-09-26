@@ -113,7 +113,6 @@ class SLM:
         User input: {user_input}
         """
         prompt = template.format(context=context,user_input=user_input)
-        print(prompt)
         if is_stream:
             response = chat_engine.stream_chat(prompt)
         else:
