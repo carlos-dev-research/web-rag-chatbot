@@ -128,5 +128,5 @@ docker-compose down
 ### 5. Model should now be running on http://127.0.0.1:5000
 
 ## Samples
-![sample1](https://github.com/carlos-dev-research/web-rag-chatbot/blob/main/video-samples/chat-video.mp4)
+[Video Preview](https://github.com/carlos-dev-research/web-rag-chatbot/blob/main/video-samples/chat-video.mp4)
 
