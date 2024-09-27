@@ -18,8 +18,6 @@ def get_auth():
     
     # Create new token
     try:
-        print(user)
-        print(password)
         token = session.create_token(current_app.mydb, user, password, token_duration)
     except:
         return jsonify({'error': 'Unable to get authorization'}), 401
