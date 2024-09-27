@@ -17,6 +17,8 @@ services:
   web:
     image: web-rag-chatbot:01  # Use the pre-built image
     container_name: web-service
+    volumes:
+      - ./data:/App/data
     ports:
       - "5000:5000"
     networks:

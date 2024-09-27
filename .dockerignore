@@ -12,6 +12,9 @@ init.sql
 # Ignore notebook
 notebooks/
 
+# Ignore data folder, note it will be mounted later
+data/
+
 # Ignore Video Sample
 video-samples/
 
