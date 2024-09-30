@@ -117,13 +117,13 @@ bash build-docker.sh
 ### 3. Start Services
 ```bash
 # Run the compose Docker to set up containers
-docker-compose up
+docker compose up
 ```
 
 ### 4. Stop Services
 ```bash
 # Stop the Services if needed
-docker-compose down
+docker compose down
 ```
 
 ### 5. Model should now be running on http://127.0.0.1:5000
