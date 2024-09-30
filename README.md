@@ -31,6 +31,7 @@ If you plan on using this project, you must comply with the licenses and conditi
 - **Progressive Summarization:** Applying custom loops to summarize information progressively could help compress information and enable the LLM to produce better summaries.
 - **NoSQL Databases** For large scale applications NoSQL database could prove more suited for handling chat history, they are easier to scale horizontally and the consistency of the chat information is not critical
 - **Video Summarization:** the video summarization is not reliable as it depends on pytube and it constantly changing according to how Youtube changes its web request structure
+- **Authorization token:** For simplicity tokens were handle as query parameters in the request, for production environments, they should be handle in headers
 
 ## Prerequisites
 - A NVIDIA GPU compatible with CUDA.
@@ -108,22 +109,22 @@ cd web-rag-chatbot
 ### 2. Build Docker container and get images
 ```bash
 # Get the lastest mysql community image
-docker pull mysql:latest
+sudo docker pull mysql:latest
 
 # Build docker image from docker file
-bash build-docker.sh
+sudo bash build-docker.sh
 ```
 
 ### 3. Start Services
 ```bash
 # Run the compose Docker to set up containers
-docker compose up
+sudo docker compose up
 ```
 
 ### 4. Stop Services
 ```bash
 # Stop the Services if needed
-docker compose down
+sudo docker compose down
 ```
 
 ### 5. Model should now be running on http://127.0.0.1:5000

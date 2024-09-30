@@ -113,11 +113,8 @@ def stream_send():
     try:
         if conversation_id is None:
             conversation = [{'role': 'user', 'content': message}]
-            print(conversation)
             title = current_app.slm.create_title(message)
-            print(title)
             conversation_id = ss.create_conversation(title,conversation)
-            print(conversation_id)
         else:
             conversation = ss.read_conversation(conversation_id)
             conversation.append({'role': 'user', 'content': message})
