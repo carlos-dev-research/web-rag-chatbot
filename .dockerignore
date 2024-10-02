@@ -25,9 +25,15 @@ __pycache__/
 # Ignore uploaded audios but keep the directory
 uploaded_audios/*
 
+# Ignore rever proxy folder
+reverse-proxy/
+
 # Additional files to ignore in Docker
 .gitignore
 Dockerfile
 .gitkeep
-run-docker.sh
 build-docker.sh
+docker-compose.yml
+docker-compose-proxy.yml
+test-deploy.sh
+test-deploy-with-proxy.sh

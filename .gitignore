@@ -21,3 +21,8 @@ __pychache__/
 # Ignore uploaded Audios
 uploaded_audios/*
 !uploaded_audios/.gitkeep
+
+# Ignore certificates and nginx configuration
+reverse-proxy/certs/*
+!/reverse-proxy/certs/.gitkeep
+reverse-proxy/nginx.conf

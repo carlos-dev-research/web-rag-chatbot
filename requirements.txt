@@ -1,6 +1,3 @@
-# Basic pip and Jupyter setup
-jupyterlab
-
 # PyTorch and its ecosystem
 torch
 torchvision
@@ -23,7 +20,6 @@ blinker
 pytube
 bcrypt
 mysql-connector-python
-pytest
 
 # Llama-index libraries
 llama-index-core

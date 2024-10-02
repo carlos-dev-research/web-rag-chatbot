@@ -1,5 +1,5 @@
 # Base Image
-FROM ubuntu:22.04
+FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
 SHELL ["/bin/bash", "-c"]
 
 
@@ -9,25 +9,16 @@ COPY . /App
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     curl \
-    gnupg2 \
     ca-certificates \
-    software-properties-common \
-    build-essential \
     wget \
+    python3 \
     python3-pip \
-    ffmpeg
-
-RUN add-apt-repository ppa:graphics-drivers/ppa
-
-# Install nvidia toolkit
-RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
-RUN dpkg -i cuda-keyring_1.1-1_all.deb
-RUN apt-get update
-RUN apt-get -y install cuda-toolkit-12-5
+    ffmpeg \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install python packages
 RUN python3 -m pip install -U pip
-RUN pip3 install --ignore-installed -r /App/requirements.txt
+RUN python3 -m pip install --no-cache-dir -r /App/requirements.txt
 
 # Install ollama
 RUN curl -fsSL https://ollama.com/install.sh | sh
