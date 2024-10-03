@@ -25,7 +25,7 @@ class SLM:
     def __init__(self,model_name,):
         self.model_name=model_name
         self.audio_model = Speech2Text()
-        Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-base-en-v1.5")
+        Settings.embed_model = HuggingFaceEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2")
         Settings.llm = Ollama(model=self.model_name, request_timeout=360.0)
     
     def prompt(self,chat_history,stream):
