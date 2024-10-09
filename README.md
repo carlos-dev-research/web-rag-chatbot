@@ -114,20 +114,29 @@ sudo docker pull mysql:latest
 # Get the lastest nginx if planned to use with reverse proxy
 sudo docker pull nginx:latest
 
-# Build docker image from docker file
-sudo bash build-docker.sh
+# Get docker image for the web service
+sudo docker pull carlosdevresearch/web-rag-chatbot:01
+
+# Or Build docker image from docker file to get the last version
+# sudo bash build-docker.sh
 ```
 
-### 3. Start Services
+### 3. Start/Stop Services
 ```bash
-# Run the compose Docker to set up containers
+# Start Services
 sudo docker compose up
+
+# Stop Services
+sudo docker compose down
 ```
 
-### 4. Stop Services
+### 4. Start/Stop Services with Reverse Proxy deployment
 ```bash
-# Stop the Services if needed
-sudo docker compose down
+# Start Services
+sudo bash start-test-deploy-with-proxy
+
+# Stop Services
+sudo bash stop-test-deploy-with-proxy
 ```
 
 ### 5. Model should now be running on http://127.0.0.1:5000
