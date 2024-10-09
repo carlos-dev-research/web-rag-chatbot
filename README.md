@@ -111,6 +111,9 @@ cd web-rag-chatbot
 # Get the lastest mysql community image
 sudo docker pull mysql:latest
 
+# Get the lastest nginx if planned to use with reverse proxy
+sudo docker pull nginx:latest
+
 # Build docker image from docker file
 sudo bash build-docker.sh
 ```
