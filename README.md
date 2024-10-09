@@ -133,10 +133,10 @@ sudo docker compose down
 ### 4. Start/Stop Services with Reverse Proxy deployment
 ```bash
 # Start Services
-sudo bash start-test-deploy-with-proxy
+sudo bash start-test-deploy-with-proxy.sh
 
 # Stop Services
-sudo bash stop-test-deploy-with-proxy
+sudo bash stop-test-deploy-with-proxy.sh
 ```
 
 ### 5. Model should now be running on http://127.0.0.1:5000
